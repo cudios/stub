@@ -1,4 +1,4 @@
-const VERSION = "stub-mutnjzxh";
+const VERSION = "stub-mutpfhca";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -58,6 +58,7 @@ const APP_SHELL = [
   "./src/screens/not-found.js",
   "./src/screens/setup.js",
   "./src/ui/app-bar.js",
+  "./src/ui/brand.js",
   "./src/ui/dom.js",
   "./src/ui/empty.js",
   "./src/ui/feedback.js",

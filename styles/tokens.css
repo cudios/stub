@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/geist-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/geist-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/geist-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../assets/fonts/geist-mono-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shantell Sans";
+  src: url("../assets/fonts/shantell-sans-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shantell Sans";
+  src: url("../assets/fonts/shantell-sans-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #3a3a3a;
+  --muted: #6b6b6b;
+  --line: #0a0a0a;
+  --hairline: #e4e4e1;
+  --dash: #b9b9b4;
+  --wash: #f4f4f2;
+  --ok: #0b6b34;
+  --ok-wash: #e3f5e9;
+  --bad: #b3261e;
+  --bad-wash: #fde9e6;
+  --warn: #8a5200;
+  --warn-wash: #fff2d9;
+  --font-hand: "Shantell Sans", "Segoe Print", "Comic Sans MS", system-ui, sans-serif;
+  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 18px;
+  --radius-field: 12px;
+  --radius-pass: 28px;
+  --radius-pill: 999px;
+  --border: 1.5px solid var(--line);
+  --tap: 48px;
+  --column: 480px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}

@@ -1,0 +1,121 @@
+.pass {
+  --notch: 15px;
+  position: relative;
+  align-self: center;
+  width: 100%;
+  max-width: 360px;
+  overflow: hidden;
+  border: var(--border);
+  border-radius: var(--radius-pass);
+  background: var(--paper);
+}
+
+.pass__top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 22px 22px 20px;
+}
+
+.pass__event {
+  font: 600 18px/1.25 var(--font-body);
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.pass__dates {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.pass__qr {
+  width: min(100%, 220px);
+  aspect-ratio: 1;
+  margin: 16px auto 0;
+}
+
+.pass__qr svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pass__stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 22px 20px;
+  border-top: 1.5px dashed var(--line);
+}
+
+.pass__stub::before,
+.pass__stub::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: calc(var(--notch) * 2);
+  height: calc(var(--notch) * 2);
+  border: var(--border);
+  border-radius: 50%;
+  background: var(--paper);
+  transform: translateY(-50%);
+}
+
+.pass__stub::before {
+  left: calc(var(--notch) * -1 - 1.5px);
+}
+
+.pass__stub::after {
+  right: calc(var(--notch) * -1 - 1.5px);
+}
+
+.pass__name {
+  font: 600 24px/1.2 var(--font-body);
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+}
+
+.pass__rule {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.pass__tag {
+  padding: 1px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+}
+
+.pass__days {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.pass__id {
+  margin-top: 8px;
+  font: 500 15px/1.3 var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.pass--void .pass__qr {
+  opacity: 0.12;
+}
+
+.pass__void-label {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  padding: 6px 16px;
+  border: 2px solid var(--bad);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--bad);
+  font: 600 20px/1.2 var(--font-body);
+  transform: translate(-50%, -50%) rotate(-6deg);
+}
