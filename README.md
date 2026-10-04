@@ -23,54 +23,40 @@ and a pass used twice gets caught instead of silently accepted.
 
 ## The problem
 
-Put ten thousand people in one ground and the mobile network gives up. Entry apps that ask a server about every ticket freeze right when the queue is longest. Paper lists never freeze, but they can't tell you that the same pass just walked in through the other gate.
+Picture this: Ten thousand people. One gate. Zero signal.
 
-## How it works
+Most events still check entries one of two ways:
+1. **Paper tickets**, which are easy to fake and impossible to track. Or,
+2. **dedicated scanning machines**, which are expensive and often get stuck the moment the signal drops.
 
-| Step | What happens |
+Either way, the queue stops and everyone waits.
+
+## Meet Stub...
+
+Stub turns **any phone into an entry scanner.** 
+
+1. **Create an event.** You get two codes, one for organizers and one for gate staff.
+2. **Add attendees.** Each one gets a QR pass to download or share.
+3. **Scan at the gate.** Green or red in about a second, online or offline!
+4. **Reconnect.** Every phone syncs up and flags anything fishy, side by side.
+
+Need another gate? Just hand someone the volunteer code. That's it!
+
+## Why it's different
+
+- **It never waits for the internet.** Every phone carries its own copy of the event.
+- **It never loses a scan.** Records are only ever added, never overwritten.
+- **It never hides a problem.** Same pass at two gates? A pass used more days than allowed? A cancelled pass let in? The moment phones reconnect, Stub catches it.
+
+## Under the hood
+
+| Choice | Why |
 |---|---|
-| **Create** | Make an event and get a manager code and a volunteer code. No accounts. |
-| **Issue** | Add attendees with an *Any X days* or *Fixed days* pass, optional re-entry. Download or share each pass. |
-| **Scan** | Point the camera at a pass. Green or red, with the reason, online or not. |
-| **Sync** | Scans queue on the device and upload by themselves when the signal returns. |
-| **Catch** | Every device cross-checks the merged history and flags misuse, side by side. |
+| Installable web app | Runs in any phone browser, with nothing to download from an app store |
+| Firestore with offline cache | Handles the queue and syncing, so the app can focus on rules and conflicts |
+| Append-only records | Overwrites simply can't happen, and the database rules enforce it |
 
-## What makes it different
-
-- **The gate never waits for a server.** Each device checks passes against its own copy of the event.
-- **Nothing is ever overwritten.** Scans and edits are only ever added as new records, so a late sync can't erase another device's work.
-- **Every device agrees on conflicts.** The same check runs everywhere over the same history, so no device has to be in charge.
-- **Honest about offline.** A phone without signal only knows its own scans. Stub doesn't pretend otherwise and catches cross-device misuse the moment devices reconnect.
-
-## What it catches
-
-| Conflict | Example |
-|---|---|
-| Same pass entered twice | Two offline gates both let one pass in |
-| More days used than allowed | A 1-day pass used on two days at different gates |
-| Cancelled pass let in | The organizer cancels a pass while a gate admits it offline |
-| Conflicting edits | Two managers rename the same attendee offline. The latest wins and the other version stays visible |
-
-## Architecture
-
-```mermaid
-flowchart LR
-  A["Scanner and screens"] --> B["Pass rules and conflict detector<br/>pure logic, unit tested"]
-  A --> C[("On-device cache<br/>IndexedDB and write queue")]
-  C <-->|"syncs when online"| D[("Cloud Firestore")]
-  D <--> E["Other devices"]
-  F["Service worker"] -.->|"serves the app offline"| A
-```
-
-| Decision | Why |
-|---|---|
-| Installable PWA, no build step | Runs in any phone browser, and the repo is exactly what gets deployed |
-| Firestore with its offline cache | A reliable queue, retries and realtime sync, so the app's own code can focus on rules and conflicts |
-| Append-only records | Silent overwrites are impossible by design, and the database rules enforce it |
-| Conflicts computed, not stored | Every device reaches the same answer without coordinating |
-| Native QR reader with a fallback | Fast on Android Chrome, still works with laptop webcams |
-
-The reasoning behind each choice is in the [documentation](docs/DOCUMENTATION.md#key-technical-decisions).
+Curious about the details? It's all in the [documentation](docs/DOCUMENTATION.md#key-technical-decisions).
 
 ## Try it in two minutes
 
@@ -106,6 +92,6 @@ Step-by-step setup is in the [documentation](docs/DOCUMENTATION.md#run-it-yourse
 
 ## Built with
 
-Cloud Firestore, qrcode-generator, jsQR, and the Geist and Shantell Sans fonts. No external datasets. The code was written with AI assistance (Claude, by Anthropic). The idea, requirements, design decisions and device testing are the author's.
+Cloud Firestore, qrcode-generator, jsQR, and the Geist and Shantell Sans fonts. No external datasets. The code was written with AI assistance. The idea, requirements, design decisions and device testing were mine.
 
 <div align="center"><sub>Released under the Apache License 2.0</sub></div>
