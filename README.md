@@ -23,10 +23,10 @@ and a pass used twice gets caught instead of silently accepted.
 
 ## The problem
 
-Picture this: Ten thousand people. One gate. Zero signal.
+Picture this: Ten thousand people. And there's zero signal.
 
 Most events still check entries one of two ways:
-1. **Paper tickets**, which are easy to fake and impossible to track. Or,
+1. **Paper tickets**, which are easy to fake and hard to track. Or,
 2. **dedicated scanning machines**, which are expensive and often get stuck the moment the signal drops.
 
 Either way, the queue stops and everyone waits.
@@ -40,7 +40,7 @@ Stub turns **any phone into an entry scanner.**
 3. **Scan at the gate.** Green or red in about a second, online or offline!
 4. **Reconnect.** Every phone syncs up and flags anything fishy, side by side.
 
-Need another gate? Just hand someone the volunteer code. That's it!
+Need another pass scanner? Just hand someone the volunteer code. That's it!
 
 ## Why it's different
 
